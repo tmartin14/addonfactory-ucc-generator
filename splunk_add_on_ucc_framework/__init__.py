@@ -756,7 +756,7 @@ def main():
         logger.info("Copy LICENSES directory ")
         recursive_overwrite(license_dir, os.path.join(outputdir, ta_name,"LICENSES"))
 
-    if os.path.exists(os.path.abspath(os.path.join(args.source,PARENT_DIR,"update_package.py"))):
+    if os.path.exists(os.path.abspath(os.path.join(args.source,PARENT_DIR,"additional_packaging.py"))):
         sys.path.insert(0,os.path.abspath(os.path.join(args.source,PARENT_DIR)))
         from additional_packaging import additional_packaging
         additional_packaging(ta_name)
