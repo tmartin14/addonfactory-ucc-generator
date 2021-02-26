@@ -237,6 +237,9 @@ define([
             if (this.cachedCollection) {
                 this._render();
             } else {
+                this.deferred.fail(() => {
+                    this._on_fail_render();
+                })
                 this.deferred.done(() => {
                     this.stateModel.set('fetching', false);
                     this.cachedCollection = this.combineCollection();
@@ -246,6 +249,10 @@ define([
                 });
             }
             return this;
+        },
+
+        _on_fail_render: function new_render() {
+            this.$el.html('<p style="color: red;">Error loading the inputs page. Its expected if you are seeing this on splunk cloud search head. If not then please contact the splunk administrator.</p>');
         },
 
         _render: function () {
