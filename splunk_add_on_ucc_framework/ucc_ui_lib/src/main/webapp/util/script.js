@@ -1,8 +1,9 @@
+import { axiosCallWrapper } from '../util/axiosCallWrapper';
 // NOTE: The resolve will only be executed if the globalConfig exist
 export function loadGlobalConfig() {
     // Get the configuraiton json file in sync mode
     return new Promise((resolve, reject) => {
-        fetch(`${getBuildDirPath()}/globalConfig.json`).then((res) => {
+        axiosCallWrapper(`${getBuildDirPath()}/globalConfig.json`).then((res) => {
             return res.json();     
         }).then((json) => {
             // window.__globalConfig = json;
